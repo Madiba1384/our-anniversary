@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Story ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #08080d;
+    color: #fff;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Background glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 70, 120, 0.12);
+    filter: blur(100px);
+    border-radius: 50%;
+    top: 10%;
+    left: -150px;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: rgba(120, 70, 255, 0.10);
+    filter: blur(100px);
+    border-radius: 50%;
+    bottom: 5%;
+    right: -150px;
+    z-index: -1;
+}
+
+/* Opening */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 700px;
+    animation: fadeUp 1.5s ease;
+}
+
+.small {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #ff9db9;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(45px, 12vw, 90px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: #cfcfd6;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.btn {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 14px 28px;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+    cursor: pointer;
+    background: rgba(255,255,255,.05);
+    font-family: inherit;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #08080d;
+    transform: translateY(-3px);
+}
+
+/* Sections */
+section {
+    padding: 90px 22px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #9999a5;
+}
+
+/* Story */
+.story {
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 25px;
+    padding: 30px;
+}
+
+.story p {
+    color: #ddd;
+    font-size: 17px;
+    white-space: pre-line;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    margin-top: 30px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255,255,255,.2);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 55px;
+    margin-bottom: 45px;
+}
+
+.dot {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #ff6f9b;
+    box-shadow: 0 0 20px rgba(255,111,155,.6);
+}
+
+.timeline-item h3 {
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    color: #aaaab5;
+}
+
+/* Love cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,130,160,.4);
+}
+
+.card span {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #bbb;
+}
+
+/* Photos */
+.photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.photo {
+    height: 220px;
+    border-radius: 18px;
+    background: linear-gradient(135deg,#252531,#12121a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    color: #777784;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.photo:first-child {
+    grid-column: span 2;
+    height: 300px;
+}
+
+/* Game */
+.game {
+    text-align: center;
+    background: rgba(255,255,255,.035);
+    border-radius: 25px;
+    padding: 30px;
+}
+
+.question {
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+
+.answers button {
+    width: 100%;
+    margin: 7px 0;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.05);
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.answers button:hover {
+    background: rgba(255,100,140,.2);
+}
+
+#gameResult {
+    margin-top: 20px;
+    color: #ff9db9;
+}
+
+/* Letter */
+.letter {
+    background: #111119;
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    position: relative;
+}
+
+.letter::before {
+    content: "♥";
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #ff6f9b;
+}
+
+.letter p {
+    color: #ddd;
+    font-size: 17px;
+    white-space: pre-line;
+}
+
+/* Final */
+.final {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.final h2 {
+    font-size: clamp(40px,10vw,75px);
+}
+
+.final p {
+    color: #aaa;
+    margin: 20px auto 30px;
+    max-width: 600px;
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 30px;
+    font-size: 22px;
+    color: #ff9db9;
+    animation: fadeUp 1s ease;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 18px;
+    pointer-events: none;
+    animation: float 7s linear forwards;
+    opacity: .7;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: .7;
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+@media(max-width:600px) {
+    section {
+        padding: 70px 18px;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+    }
+
+    .photo:first-child {
+        grid-column: span 1;
+    }
+
+    .photo,
+    .photo:first-child {
+        height: 260px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small">
+            One year. One story.
+        </div>
+
+        <h1>
+            [HER NAME] ❤️
+        </h1>
+
+        <p>
+            I could have just said "Happy Anniversary"...
+            but you deserve more than that.
+        </p>
+
+        <a href="#story" class="btn">
+            Open Our Story ✨
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- STORY -->
+<section id="story">
+
+    <div class="section-title">
+        <div class="small">Chapter One</div>
+        <h2>How It Started</h2>
+        <p>The beginning of something beautiful.</p>
+    </div>
+
+    <div class="story">
+
+        <p>
+[YOUR PARAGRAPH GOES HERE]
+
+Replace this entire section with the paragraph you already wrote.
+
+You can keep line breaks exactly how you want them to appear.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- TIMELINE -->
+<section>
+
+    <div class="section-title">
+        <div class="small">Our Journey</div>
+        <h2>A Year In Moments</h2>
+        <p>Some moments deserve their own chapter.</p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <h3>❤️ The Beginning</h3>
+            <p>[WRITE ABOUT HOW YOU TWO STARTED]</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <h3>✨ The First Memory</h3>
+            <p>[WRITE ABOUT ONE OF YOUR FAVORITE EARLY MEMORIES]</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <h3>😂 The Funny One</h3>
+            <p>[ADD AN INSIDE JOKE OR FUNNY MEMORY]</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <h3>🥹 The Moment</h3>
+            <p>[WRITE ABOUT A MOMENT THAT MEANT A LOT TO YOU]</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <h3>❤️ Today</h3>
+            <p>[YOUR ANNIVERSARY DATE]</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- THINGS I LOVE -->
+<section>
+
+    <div class="section-title">
+        <div class="small">The Little Things</div>
+        <h2>Things I Love About You</h2>
+        <p>And honestly... I could keep going.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <span>😊</span>
+            <h3>Your Smile</h3>
+            <p>[WHY YOU LOVE HER SMILE]</p>
+        </div>
+
+        <div class="card">
+            <span>😂</span>
+            <h3>Your Laugh</h3>
+            <p>[SOMETHING ABOUT HER LAUGH]</p>
+        </div>
+
+        <div class="card">
+            <span>🫶</span>
+            <h3>Your Heart</h3>
+            <p>[SOMETHING YOU LOVE ABOUT HER]</p>
+        </div>
+
+        <div class="card">
+            <span>🌹</span>
+            <h3>Just You</h3>
+            <p>[SOMETHING ONLY SHE DOES]</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PHOTOS -->
+<section>
+
+    <div class="section-title">
+        <div class="small">Our Memories</div>
+        <h2>A Few Of My Favorites</h2>
+        <p>Replace these boxes with your pictures later.</p>
+    </div>
+
+    <div class="photos">
+
+        <div class="photo">
+            📸<br>
+            [YOUR FAVORITE PHOTO]
+        </div>
+
+        <div class="photo">
+            📸<br>
+            [PHOTO 2]
+        </div>
+
+        <div class="photo">
+            📸<br>
+            [PHOTO 3]
+        </div>
+
+        <div class="photo">
+            📸<br>
+            [PHOTO 4]
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GAME -->
+<section>
+
+    <div class="section-title">
+        <div class="small">Okay... Let's Play</div>
+        <h2>How Well Do You Know Us? 👀</h2>
+        <p>Let's see if you remember...</p>
+    </div>
+
+    <div class="game">
+
+        <div class="question" id="question">
+            Who fell first? 👀
+        </div>
+
+        <div class="answers">
+
+            <button onclick="answer('wrong')">
+                Me 😂
+            </button>
+
+            <button onclick="answer('correct')">
+                 We both did🤍
+            </button>
+
+            <button onclick="answer('wrong')">
+              You😌
+            </button>
+
+        </div>
+
+        <div id="gameResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- LOVE LETTER -->
+<section>
+
+    <div class="section-title">
+        <div class="small">A Letter For You</div>
+        <h2>Dear [HER NAME]...</h2>
+    </div>
+
+    <div class="letter">
+
+        <p>
+[YOUR LOVE LETTER GOES HERE]
+
+This is where you can put your longer anniversary message.
+
+Don't worry about making it perfect.
+
+Just say what you genuinely feel.
+        </p>
+
+        <br>
+
+        <p>
+Forever yours,
+
+ Femi
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL SURPRISE -->
+<section class="final">
+
+    <div>
+
+        <div class="small">
+            And finally...
+        </div>
+
+        <h2>
+            One Year.
+            <br>
+            Still You. 🤍
+        </h2>
+
+        <p>Hey my love, we did it!! it was never easy but the glimpse of hope that fills your eyes always seemed to keep me 
+          going! it's a year down and many more faithful ones with Jesus and us. I love you so much Johnette Glory Yamah-Weedor Flumo!🤍 
+        </p>
+
+        <button class="btn" onclick="revealMessage()">
+            One More Thing...
+        </button>
+
+        <div class="hidden-message" id="hiddenMessage">
+            I choose you. Today, tomorrow, and every chapter after this one.🤍
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    Made with love for My Weedor 🤍
+</footer>
+
+
+<script>
+
+/* Mini game */
+
+function answer(result) {
+
+    const message = document.getElementById("gameResult");
+
+    if(result === "correct") {
+
+        message.innerHTML =
+        "You remembered! 😌❤️ Okay... maybe you know us pretty well.";
+
+    } else {
+
+        message.innerHTML =
+        "Hmmmm... I'm not convinced 😂 Try again.";
+
+    }
+
+}
+
+
+/* Final surprise */
+
+function revealMessage() {
+
+    document.getElementById("hiddenMessage").style.display = "block";
+
+}
+
+
+/* Floating hearts */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        ["❤️","💗","💕","💖","♥"][Math.floor(Math.random()*5)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+
+}
+
+setInterval(createHeart, 1200);
+
+</script>
+
+</body>
+</html>
