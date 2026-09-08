@@ -375,15 +375,21 @@ footer {
 
     .photos {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .photo:first-child {
         grid-column: span 1;
+        height: 260px;
     }
 
-    .photo,
-    .photo:first-child {
-        height: 260px;
+    .photo{height:220px;}
+    .photo img{
+        height: 100%;
+        width:100%;
+        object-fit: cover;
+        object-position:center;
+        display: block;
     }
 }
 </style>
