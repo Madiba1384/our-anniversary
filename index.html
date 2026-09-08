@@ -923,7 +923,18 @@ function createHeart() {
 
 setInterval(createHeart, 1200);
 
+    
 </script>
+<audio id="bgMusic" loop>
+<source src="Daniel-Caesar-Ft-HER-Best-Part-(TrendySongz.com).mp3" type="audio/mpeg">
+</audio>
 
+<script>
+document.addEventListener('click', function startMusic() {
+const music = document.getElementById('bgMusic');
+music.play();
+document.removeEventListener('click', startMusic);
+});
+</script>
 </body>
 </html>
